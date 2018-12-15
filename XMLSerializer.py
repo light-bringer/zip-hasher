@@ -42,4 +42,4 @@ def XMLSerialize(listOfData):
     
     tree = ET.ElementTree(root)
     tree.write(utils.get_xml_file(), pretty_print=True, xml_declaration=True, encoding="utf-8", standalone="yes")
-    print "writing to XML file.."
+    print ("writing to XML file..")

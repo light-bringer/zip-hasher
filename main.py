@@ -1,20 +1,20 @@
-import ConfigParser
+import configparser
 import sys
 import utils
+import argparse
 from Class import FileDetails
 import XMLSerializer as XS
 
 TEMP_DIR = utils.get_tmp_path()
 
-def main():
-    args = sys.argv
+def main(args):
     if len(args)!= 2:
-        print "pass arguements correctly!"
+        print("pass arguements correctly!")
         exit(-1)
     
     zip_path = args[1]
     if utils.valid_file(zip_path) is not True:
-        print "bad zip"
+        print("bad zip")
         exit(-1)
     data_for_all_files = []
     path_to_extract = utils.random_temp_path(TEMP_DIR)
@@ -36,4 +36,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description='Process some zip files to an XML.')
+    parser.add_option('-z', '--zip', action="store", dest="zip", help="pass the path to zip file", required=True)
+    args = parser.parse_args()
+    print(args)
+    main(args)
